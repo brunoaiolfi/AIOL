@@ -1,0 +1,107 @@
+
+{{!-- Modal Cadastro --}}
+
+
+{{!-- SIDEBAR --}}
+
+<div class="d-flex">
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="position: fixed; width: 280px; height: 100vh">
+      <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-4">AIOL</span>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="/vendas" class="nav-link active" aria-current="page">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+             Vendas
+            </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+              Estoque
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" style="width: 248px" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <a class="dropdown-item" href="/produtos">Produtos</a></li>
+            <li><a class="dropdown-item" href="/categorias">Categorias</a></li>
+          </ul>
+
+        </li>
+        
+        <li>
+          <a href="/clientes" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+            Clientes
+          </a>
+        </li>
+
+      </ul>
+      {{>_logOut}}
+    
+    </div>
+    
+  
+<div style="width: 100vw; padding:50px">
+<div class="list-group" style="margin-left: 22vw; width: 70vw">
+
+    <div class="d-grid gap-2">
+            <a href="/formCadVenda" class="mb-3 btn btn-success"> Cadastrar venda</a>
+            
+                   
+         
+    </div>
+
+        {{#each erros}}
+            <div class="alert alert-danger alert-dismissible fade show" style="" role="alert">
+                {{texto}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
+        {{/each}}
+        {{#each sucesso}}
+            <div class="alert alert-success alert-dismissible fade show" style="" role="alert">
+                {{texto}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
+        {{/each}}
+
+    {{#each compra}}
+            <div class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+
+                    <h5 class="mb-1">ID: {{dataValues.id}}</h5>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        
+                            <a href="/deleteVenda/{{dataValues.id}}" class="btn btn-danger me-md-2">
+                                Excluir
+                            </a>
+                        
+                            
+                            <a href="/editVenda/{{dataValues.id}}" class="btn btn-secondary me-md-2">
+                                Editar
+                            </a>
+                          
+                       
+                    </div>
+
+                </div>
+                <p class="mb-1">Cliente: {{dataValues.nome_cliente}}</p>
+                <p class="mb-1">CPF: {{dataValues.cpf_cliente}}</p>
+                <p class="mb-1">Valor total: R$ {{dataValues.valor_total}}</p>
+                <p class="mb-1">Data hora: {{dataValues.createdAt}}</p>
+                <hr>
+                
+                <a href="/mostrarDetalhesVenda/{{dataValues.id}}" class="btn btn-primary me-md-2">
+                  Mostrar mais detalhes
+                </a>
+
+            </div><br>
+            
+    {{/each}}
+</div>
+</div>

@@ -1,0 +1,98 @@
+<style>
+  body{
+    background-color: rgb(243, 243, 243);
+  }
+</style>
+{{!-- SIDEBAR --}}
+
+<div class="d-flex">
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100vh">
+      <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-4">AIOL</span>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="/vendas" class="nav-link text-white" aria-current="page">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+             Vendas
+            </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+              Estoque / Produtos
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" style="width: 248px" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <a class="dropdown-item" href="/categorias">Categorias</a></li>
+          </ul>
+
+        </li>
+        
+        <li>
+          <a href="/clientes" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+            Clientes
+          </a>
+        </li>
+
+      </ul>
+      {{>_logOut}}
+  
+    </div>
+{{!-- FORM --}}
+
+       <div style="width: 100vw; padding:50px">
+<div style=" background-color: #fff;  margin-left: 10vw; padding: 20px 40px;  border-radius: 10px; width: 45vw">
+{{#produto}}
+    <form action="/editProduto"  method="POST">
+                {{!-- Nome --}}
+                <div class="form-header">
+                    <h5 class="form-title">Editar produto</h5>
+                    <hr>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Nome do produto:</label>
+                    <input placeholder="{{dataValues.nome}}" type="text" name="Fnome" class="form-control" required>
+
+                </div>
+                
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Preço:</label>
+                    <input placeholder="{{dataValues.preco}}" type="number" name="Fpreco" class="form-control">
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Quantidade:</label>
+                    <input type="number" placeholder="{{dataValues.qntd}}" name="Fqntd" class="form-control">
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Categoria:</label>
+{{/produto}}
+                    
+                    <select class="form-select" name="Fcategoria" aria-label="Default select example" required>
+                        {{#each categoria}}
+                            <option value="{{dataValues.nome}}">{{dataValues.nome}}
+                            </option>
+                        
+                        {{/each}}
+                    </select>
+
+                </div>
+                
+                
+
+            <div class="modal-footer">
+                <a href="/produtos"class="btn btn-danger">Cancelar</a>
+                <button type="submit" class="btn btn-success">Cadastrar</button>
+            </div>    
+        </form>
+</div>
+</div>
+        

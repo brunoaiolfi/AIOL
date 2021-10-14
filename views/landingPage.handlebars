@@ -1,0 +1,295 @@
+<style>
+  body{
+    background: linear-gradient(80.14deg, #248CD7 1000%, rgba(0, 194, 255, 0.94) 20.65%);
+    overflow: hidden;
+}
+
+.landing-page{
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    margin-top: 19%;
+    
+   
+ 
+}
+
+.aiol{
+
+    margin-left: 15%;
+    font-size: 40px;
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+    /* text-decoration: underline; */
+
+}
+
+
+.mensagem{
+    margin-top: -40%;
+    margin-left: 15%;
+    width: 500px;
+    color: rgb(223, 250, 255);
+    text-align: left;
+}
+
+.mensagem-parte1{
+    width: 300px;
+    font-weight: bolder;
+    line-height: 0.8;
+    font-size: 80px;
+}
+
+.button-group{
+  position: relative;
+  margin-top: 220px;
+
+}
+
+.btn-cad{
+    
+    color: #615127;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    
+    width: 120px;
+    height: 50px;
+    
+    background: #FFD666;
+
+    box-sizing: border-box;
+    border-radius: 15px;
+
+}
+
+.btn-login{
+    
+    color: #615127;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    
+    margin-right: 25px;
+    margin-left: 5px;
+    width: 120px;
+    height: 50px;
+    
+    background: #ffffff;
+
+    box-sizing: border-box;
+    border-radius: 15px;
+
+}
+
+.working{
+    margin-top: -15%;
+}
+
+.animate-right-titulo{
+    animation-name: right;
+    animation-duration: 300ms;
+}
+
+.animate-right-mensagem{
+    animation-name: right;
+    animation-duration: 1300ms;
+}
+
+@keyframes right{
+    from{
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+.artesanato-icon{
+    animation-name: appear;
+    animation-duration: 1500ms;
+}
+.animate-appear{
+    animation-name: appear;
+    animation-duration: 1500ms;
+}
+
+.animate-left{
+    animation-name: left;
+    animation-duration: 1700ms;
+}
+
+@keyframes appear{
+    from{
+       opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes left{
+    from{
+        transform: translateX(400%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+
+.side-bar{
+    animation-name: appear;
+    animation-duration: 700ms;
+}
+
+</style>
+
+
+{{!-- Modal Cadastro --}}
+
+<div class="modal fade" id="modalCadastro" tabindex="-1" aria-labelledby="modalCadastro" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cadastrar-se</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        {{!-- FORM --}}
+
+        <form action="/cadastrarEmpresa" method="POST">
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Nome da empresa</label>
+                    <input type="text" name="Fnome_empresa" class="form-control" id="exampleInputPassword1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">CNPJ</label>
+                    <input type="number" name="Fcnpj_empresa" class="form-control" id="exampleInputPassword1" required>
+                </div>
+
+                <div class="mb-3">    
+                    <label for="exampleInputEmail1" class="form-label">Nome de usuário</label>
+                    <input type="text" name="Flogin_empresa" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                    <div id="emailHelp" class="form-text">Você irá usar este nome para logar na sua conta.</div>
+                </div>
+                <div class="mb-3">    
+                    <label for="exampleInputEmail1" class="form-label">E-mail</label>
+                    <input type="email" name="Femail_empresa" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Senha</label>
+                    <input type="password" name="Fsenha_empresa" class="form-control" id="exampleInputPassword1" required>
+                </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-success" disabled>Cadastrar-se</button>
+                <small></small>
+            </div>    
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+{{!-- Modal Login --}}
+
+<div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modalLogin" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Entrar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        {{!-- FORM --}}
+
+        <form action="/tryLogin" method="POST">
+            
+
+                <div class="mb-3">    
+                    <label for="exampleInputEmail1" class="form-label">Nome de usuário</label>
+                    <input type="text" name="F_login_nome_usuario" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Senha</label>
+                    <input type="password" name="F_login_senha" class="form-control" id="exampleInputPassword1" required>
+                </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-success" disabled>Entrar</button>
+            </div>    
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+{{#each erros}}
+
+<div class="alert alert-danger alert-dismissible fade show " style="margin: 20px" role="alert">
+  {{texto}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+  </button>
+</div>
+{{/each}}
+
+{{#each sucesso}}
+
+<div class="alert alert-success alert-dismissible fade show " style="margin: 20px" role="alert">
+  {{texto}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+  </button>
+</div>
+{{/each}}
+
+{{!-- Landing Page --}}
+  
+  <div id="tudo">
+
+    <div class="landing-page">
+          
+          <div class="">
+            <div class="mensagem">
+              <div class="animate-right-titulo"><h1 class="aiol">AIOL </h1></div>
+              
+              <div class="animate-right-mensagem">
+                <br>
+                <h1 class="mensagem-parte1">Rápido, fácil e<br></h1>
+                <h1 class="mensagem-parte1"> <strong>Gratuito</strong></h1><br>
+
+               
+              </div>
+            </div>
+          </div>
+
+            <div class="working animate-appear">
+              <img src="working.png" alt="Trabalhando">
+            </div>
+       
+          <div class="button-group animate-left">
+            <button type="button" class="btn btn-cad" data-bs-toggle="modal" data-bs-target="#modalCadastro">
+              Cadastrar-se
+            </button>
+
+            <button type="button" class="btn btn-login" data-bs-toggle="modal" data-bs-target="#modalLogin">
+              Entre
+            </button>
+            
+            
+          </div>
+            
+        
+    
+    
+    </div>
+</div>
+

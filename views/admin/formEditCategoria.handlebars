@@ -1,0 +1,86 @@
+{{!-- SIDEBAR --}}
+<style>
+  body{
+    background-color: rgb(243, 243, 243);
+  }
+</style>
+
+<div class="d-flex">
+  <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px; height: 100vh">
+      <a  class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        <span class="fs-4">AIOL</span>
+      </a>
+      <hr>
+      <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+          <a href="/vendas" class="nav-link text-white" aria-current="page">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+             Vendas
+            </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+              Estoque / Categorias
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" style="width: 248px" aria-labelledby="dropdownMenuButton1">
+            <li>
+              <a class="dropdown-item" href="/produtos">Produtos</a></li>
+          </ul>
+
+        </li>
+        
+        <li>
+          <a href="/clientes" class="nav-link text-white">
+            <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+            Clientes
+          </a>
+        </li>
+
+      </ul>
+      {{>_logOut}}
+   
+    </div>
+    
+{{!-- FORM --}}
+  
+<div style="width: 100vw; padding:50px">
+<div style=" background-color: #fff;  margin-left: 10vw; padding: 20px 40px;  border-radius: 10px; width: 45vw">
+    {{#categoria}}
+    <form action="/editCategoria"  method="POST">
+                {{!-- Nome --}}
+                <div class="form-header">
+                    <h5 class="form-title">Editar categoria</h5>
+                    <hr>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Nome da categoria:</label>
+                    <input placeholder="{{dataValues.nome}}"type="text" name="Ftitulo_categoria" class="form-control" required>
+
+                </div>
+                
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Descrição:</label>
+                    <textarea placeholder="{{dataValues.desc}}" name="Fdesc_categoria" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+
+                </div>
+                 <div class="mb-3" style="display: none;">
+                    <input type="text" name="nomeAntigo" value="{{dataValues.nome}}">
+                    
+
+                </div>
+                
+
+            <div class="modal-footer">
+                <a href="/categorias"class="btn btn-danger">Cancelar</a>
+                <button type="submit" class="btn btn-success">Editar</button>
+            </div>    
+        </form>
+    {{/categoria}}
+    
+   
+</div>
+</div>
+        
