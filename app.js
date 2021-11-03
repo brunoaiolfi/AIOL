@@ -125,8 +125,6 @@ const { get } = require('http');
         })
     })
 
-   
-
     app.get('/categorias',(req,res)=>{
         categoria.findAll({where: {FK_estoque: req.session.getEstoqueId}}).then((categoria)=>{
             res.render('admin/categorias',{categorias: categoria})
@@ -455,6 +453,71 @@ const { get } = require('http');
         
     })
 
+// READS
+
+    app.post('/searchClientes', (req,res)=>{
+        let searchFor = req.body.searchFor
+
+        console.log(searchFor)
+        if (searchFor == 'id'){
+                cliente.findAll({where:{id: req.body.valueSearch}}).then((cliente)=>{
+                    res.render('admin/clientes',{clientes: cliente})
+                })
+        }
+        if (searchFor == 'nome'){
+            cliente.findAll({where:{nome_cliente: req.body.valueSearch}}).then((cliente)=>{
+                res.render('admin/clientes',{clientes: cliente})
+            }) 
+        }
+    })
+
+    app.post('/searchCategorias', (req,res)=>{
+        let searchFor = req.body.searchFor
+
+        console.log(searchFor)
+        if (searchFor == 'id'){
+                categoria.findAll({where:{id: req.body.valueSearch}}).then((categoria)=>{
+                    res.render('admin/categorias',{categorias: categoria})
+                })
+        }
+        if (searchFor == 'nome'){
+            categoria.findAll({where:{nome: req.body.valueSearch}}).then((categoria)=>{
+                res.render('admin/categorias',{categorias: categoria})
+            })
+        }
+    })
+
+    app.post('/searchProdutos', (req,res)=>{
+        let searchFor = req.body.searchFor
+
+        console.log(searchFor)
+        if (searchFor == 'id'){
+                produto.findAll({where:{id: req.body.valueSearch}}).then((produto)=>{
+                    res.render('admin/produtos',{produtos: produto})
+                })
+        }
+        if (searchFor == 'nome'){
+            produto.findAll({where:{nome: req.body.valueSearch}}).then((produto)=>{
+                res.render('admin/produtos',{produtos: produto})
+            })
+        }
+    })
+
+    app.post('/searchVendas', (req,res)=>{
+        let searchFor = req.body.searchFor
+
+        console.log(searchFor)
+        if (searchFor == 'id'){
+                compra.findAll({where:{id: req.body.valueSearch}}).then((compra)=>{
+                    res.render('admin/vendas',{compra: compra})
+                })
+        }
+        if (searchFor == 'nome'){
+            compra.findAll({where:{nome_cliente: req.body.valueSearch}}).then((compra)=>{
+                res.render('admin/vendas',{compra: compra})
+            })
+        }
+    })
 // DELETES
 
    

@@ -47,6 +47,17 @@
 
     <div class="d-grid gap-2">
             <a href="/formCadProduto" class="mb-3 btn btn-success"> Cadastrar produto</a>
+           
+            <form action="/searchProdutos" class="d-flex" method="post">
+              <input class="form-control me-2" type="search" placeholder="Pesquisar" name="valueSearch" aria-label="Search">
+              <select name="searchFor" id="">
+                <option value="id">ID</option>
+                <option value="nome">Nome</option>
+              </select>
+              <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+
+            </form>
+            <br>
     </div>
 
         {{#each erros}}
@@ -85,6 +96,7 @@
                     </div>
 
                 </div>
+                <p class="mb-1">ID: {{dataValues.id}}</p>
                 <p class="mb-1">Preco: {{dataValues.preco}}</p>
                 <p class="mb-1">Quantidade: {{dataValues.qntd}}</p>
                   <p class="mb-1">Categoria: {{dataValues.nome_Categoria}}</p>

@@ -23,7 +23,7 @@ cliente.belongsTo(empresa,{
     constraint: true, foreignKey: 'FK_empresa'
 })
 
-cliente.sync({force: true})
+// cliente.sync({force: true})
 
 module.exports = cliente
 

@@ -19,5 +19,5 @@ categoria.belongsTo(empresa,{
 
 module.exports = categoria
 
-categoria.sync({force: true})
+// categoria.sync({force: true})
 

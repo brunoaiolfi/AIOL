@@ -24,7 +24,7 @@ const empresa = database.sequelize.define('empresa',{
     }    
 })
 
-empresa.sync({force:true})
+// empresa.sync({force:true})
 
 module.exports = empresa;
 

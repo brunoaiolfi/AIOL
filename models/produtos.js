@@ -23,6 +23,6 @@ produto.belongsTo(empresa,{
     constraint: true, foreignKey: 'FK_empresa'
 })
 
-produto.sync({force: true})
+// produto.sync({force: true})
 
 module.exports = produto;

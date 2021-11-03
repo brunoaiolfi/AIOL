@@ -24,6 +24,6 @@ compra.belongsTo(cliente,{
 })
 
 
-compra.sync({force: true})
+// compra.sync({force: true})
 
 module.exports = compra

@@ -47,11 +47,20 @@
 <div style="margin-left: 22vw; width: 100vw; padding:50px">
 <div class="list-group" style=" width: 70vw">
 
-    <div class="d-grid gap-2">
-        <button type="button" class="mb-3 btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCadastro">
+    
+          <button type="button" class="mb-3 btn btn-success" data-bs-toggle="modal" data-bs-target="#modalCadastro">
               Cadastrar Cliente
-        </button>
-    </div>
+          </button>
+           <form action="/searchClientes" class="d-flex" method="post">
+              <input class="form-control me-2" type="search" placeholder="Pesquisar" name="valueSearch" aria-label="Search">
+              <select name="searchFor" id="">
+                <option value="id">ID</option>
+                <option value="nome">Nome</option>
+              </select>
+              <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+
+            </form>
+            <br>
 
         {{#each erros}}
             <div class="alert alert-danger alert-dismissible fade show" style="" role="alert">
@@ -90,6 +99,7 @@
                     </div>
 
                 </div>
+                <p class="mb-1">ID: {{dataValues.id}}</p>
                 <p class="mb-1">CPF: {{dataValues.cpf}}</p>
                 <p class="mb-1">Sexo: {{dataValues.sexo_cliente}}</p>
 
